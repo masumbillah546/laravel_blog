@@ -62,7 +62,7 @@ class homeController extends Controller
         return view('studentsform');
     }
     public function insert(Request $req){
-     echo $view=$req->input('stname');
-      //return view('studentsform2',$view);
+    // echo $view=$req->input('stname');
+      return view('studentview',['req'=>$req]);
     }
 }
