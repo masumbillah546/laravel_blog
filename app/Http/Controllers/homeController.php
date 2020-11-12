@@ -56,4 +56,13 @@ class homeController extends Controller
     	print_r($rows);
 
     }
+
+
+    public function stForm(){
+        return view('studentsform');
+    }
+    public function insert(Request $req){
+     echo $view=$req->input('stname');
+      //return view('studentsform2',$view);
+    }
 }

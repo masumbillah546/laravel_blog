@@ -88,3 +88,6 @@ Route::get('/myform','homeController@form');
 Route::post('/process','homeController@process');
 Route::get('/dbquery','homeController@dbquery');
 
+Route::get('/studentform','homeController@stForm');
+Route::post('/studentsform2','homeController@insert');
+
