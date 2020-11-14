@@ -37,7 +37,7 @@ class homeController extends Controller
     public function dbquery(){
     	//get all record
     	//$rows=DB::table('students')->get();
-    	echo "<pre>";
+    	//echo "<pre>";
     	//print_r($rows);
     	//return view('students', ['students'=>$rows]);
     	//$rows=DB::table('students')->where('name','Masum Billah')->first();
@@ -50,19 +50,51 @@ class homeController extends Controller
 
     	//$rows=DB::table('students')->select('id', 'name')->get();
     	//$rows=DB::table('students')->distinct()->get(['name']);
-    	$rows=DB::table('students')
+    	$rows=DB::table('students')->join('contacts','contacts.student_id','=','students.id')->select('students.id','contacts.student_id','name','email','phone')->get();
+
     	//->join('contacts','students.id','=','contacts.student_id')->get(['name','email']);
-    	->join('contacts','contacts.student_id','=','students.id')->select('students.id','contacts.student_id','name','email')->get();
-    	print_r($rows);
+    	
+    	//print_r($rows);
+         return view('studentlist', ['req'=>$rows]);
 
     }
 
 
-    public function stForm(){
+    public function entry(){
         return view('studentsform');
     }
     public function insert(Request $req){
     // echo $view=$req->input('stname');
-      return view('studentview',['req'=>$req]);
+   $data1['name']=$req->input('stname');
+   
+        // DB::table("students")->insert(['name'=>$data]);
+      //return view('studentview',['req'=>$id]);
+
+       echo $id=  DB::table("students")->insertGetId($data1);
+
+   $data2['student_id']=$id;
+   $data2['email']=$req->input('email');
+   $data2['phone']=$req->input('phone');
+
+       DB::table("contacts")->insert($data2);
+    }
+
+
+    public function edit($id){
+
+        $rows=DB::table('students')->join('contacts','contacts.student_id','=','students.id')->select('students.id','contacts.student_id','name','email','phone')->where('students.id',$id)->first();
+
+        //print_r($rows);
+
+        return view('studentedit',['rows'=> $rows]);
+    }
+
+    public function update(Request $req){
+
+        $id=$req->input('id');
+        $name=$req->input('name');
+        $rows=DB::table('students')->where('id',$id)->update(['name'=>$name]);
+
+
     }
 }

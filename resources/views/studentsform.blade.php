@@ -7,8 +7,10 @@
 </head>
 <body>
 	<h2>Student Entry Form</h2>
-	<form action="studentsform2" method="post">
+	<form action="insert" method="post">
 		<input type="text" name="stname" placeholder="Student Name"><br>
+		<input type="text" name="email" placeholder="Student Email"><br>
+		<input type="text" name="phone" placeholder="Student Phone"><br>
 		<input type="submit" name="submit" value="Submit">
 		<?php echo csrf_field();?>
 	</form>

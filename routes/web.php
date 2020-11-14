@@ -88,6 +88,11 @@ Route::get('/myform','homeController@form');
 Route::post('/process','homeController@process');
 Route::get('/dbquery','homeController@dbquery');
 
-Route::get('/studentform','homeController@stForm');
-Route::post('/studentsform2','homeController@insert');
+Route::get('/entry','homeController@entry');
+Route::post('/insert','homeController@insert');
+Route::get('/edit/{id}','homeController@edit');
+Route::post('/update/{id}','homeController@update');
+
+
+Route::resource('sharks','sharksController');
 
