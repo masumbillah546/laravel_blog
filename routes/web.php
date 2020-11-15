@@ -91,7 +91,7 @@ Route::get('/dbquery','homeController@dbquery');
 Route::get('/entry','homeController@entry');
 Route::post('/insert','homeController@insert');
 Route::get('/edit/{id}','homeController@edit');
-Route::post('/update/{id}','homeController@update');
+Route::post('/update','homeController@update');
 
 
 Route::resource('sharks','sharksController');

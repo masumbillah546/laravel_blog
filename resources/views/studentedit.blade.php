@@ -1,3 +1,34 @@
+
+
+
+<?php
+class oop{
+public $name;
+ public function __construct($val){
+     return $this->name=$val;
+ }
+ public function sayHello(){
+     echo "Hello World";
+ }
+  
+ public function __destruct(){
+     echo "<br>Bye bye $this->name!";
+ }
+ 
+}
+$obj=new oop("Imran");
+ 
+echo "<br>";
+ 
+$obj->sayHello();
+ 
+?>
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +38,7 @@
 </head>
 <body>
 	<h2>Student Edit Form</h2>
-	<form action="update" method="post">
+	<form action="/update" method="post">
 		<label>Name</label>
 		<input type="text" name="stname" placeholder="Student Name" value="<?php echo $rows->name?>"><br>
 		<label>Email</label>
@@ -20,3 +51,6 @@
 	</form>
 </body>
 </html>
+
+
+

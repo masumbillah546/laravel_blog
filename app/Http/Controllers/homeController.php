@@ -84,7 +84,7 @@ class homeController extends Controller
 
         $rows=DB::table('students')->join('contacts','contacts.student_id','=','students.id')->select('students.id','contacts.student_id','name','email','phone')->where('students.id',$id)->first();
 
-        //print_r($rows);
+        print_r($rows);
 
         return view('studentedit',['rows'=> $rows]);
     }
@@ -92,9 +92,9 @@ class homeController extends Controller
     public function update(Request $req){
 
         $id=$req->input('id');
-        $name=$req->input('name');
+        $name=$req->input('stname');
         $rows=DB::table('students')->where('id',$id)->update(['name'=>$name]);
 
-
+echo 'update';
     }
 }
